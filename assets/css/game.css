@@ -1,0 +1,82 @@
+body{
+    background: #202020;
+    color: white;
+}
+.game{
+    width: 60%;
+    min-width: 320px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+}
+.progressBar{
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+.progressBarCover{
+    background: #202020;
+}
+.game h1{
+    text-align:center;
+    font-size: 6rem;
+    font-weight: normal;
+    font-family: 'Rubik Mono One', sans-serif;
+    margin-bottom: 0;
+}
+.game h2{
+    text-align:center;
+    font-size: 5rem;
+    font-weight: normal;
+    font-family: 'Mrs Sheppards', cursive;
+    margin-top: -4.5rem;
+}
+.wins{
+    float:left;
+}
+.losses{
+    float: right;
+}
+.wordTracker{
+    font-size: 2rem;
+    width: 60%;
+    margin: 0 auto;
+}
+.word{
+    float: right;
+}
+.buttons{
+    text-align: center;
+    margin-top: -4rem;
+    margin-bottom: 1rem;
+}
+.button{
+    display: inline-block;
+    margin: .25rem;
+    padding: .25rem;
+    background:rgba(49, 49, 49, 0.5);
+    cursor: pointer;
+    border: none;
+    font-size: 1.25rem;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+.button:hover{
+    background: rgba(255,255,255,.25);
+    color: black;
+}
+/* Additional Utilities from Internet Sources */
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+.rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.rainbow2 {
+    background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+    background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  }
