@@ -1,5 +1,5 @@
 var game = {
-	words: ["she", "found", "herself", "pillared", "hall", "that", "must", "take", "most", "the", "ground", "floor", "building", "very", "inadequate", "light", "was", "shed", "pair", "enormous", "bronze", "candelabra", "standing", "foot", "showy", "marble", "staircase", "set", "center", "which", "seemed", "inefficient", "use", "space", "much", "vague", "sculpture", "loitered", "shadows", "along", "walls", "supported", "some", "random", "rugs", "and", "few", "ugly", "sofas", "chairs", "poorly", "arranged"],
+	words: [],
 	totalWords: null,
 	getTotalWords: function () { return this.words.length },
 	progressBar: null,
@@ -118,45 +118,44 @@ var game = {
 	},
 	updateProgress: function () {
 		this.progressBar.textContent = this.guessedWords.length + " / " + this.totalWords + " Words Guessed";
-	}
-}
-
-function makeButtons() {
-	for (var i = 0; i < game.letters.length; i++) {
-		var button = document.createElement("button");
-		button.setAttribute("class", "button");
-		button.setAttribute("data-letter", game.letters[i]);
-		button.textContent = game.letters[i];
-		document.getElementById("buttons").appendChild(button);
-	}
-
-	var buttonArr = document.getElementsByClassName("button");
-	for (var i = 0; i < buttonArr.length; i++) {
-		buttonArr[i].onclick = function () {
-			letterChosen(this.getAttribute("data-letter"));
+	},
+	makeButtons: function () {
+		for (var i = 0; i < this.letters.length; i++) {
+			var button = document.createElement("button");
+			button.setAttribute("class", "button");
+			button.setAttribute("data-letter", game.letters[i]);
+			button.textContent = game.letters[i];
+			document.getElementById("buttons").appendChild(button);
 		}
-	}
-	console.log(buttonArr)
-}
-function letterChosen(choice) {
-	var isValidGuess = game.checkValidGuess(choice);
-	if (isValidGuess) {
-		game.guess(choice);
+
+		var buttonArr = document.getElementsByClassName("button");
+		for (var i = 0; i < buttonArr.length; i++) {
+			buttonArr[i].onclick = function () {
+				game.letterChosen(this.getAttribute("data-letter"));
+			}
+		}
+	},
+	letterChosen: function (choice) {
+		var isValidGuess = game.checkValidGuess(choice);
+		if (isValidGuess) {
+			game.guess(choice);
+		}
+	},
+	generateWordList: function (para) {
+		var listOfWords = para.replace(/[^A-Za-z\s]+/g, '').toLowerCase().split(" ").filter(function (item, pos, self) {
+			return self.indexOf(item) == pos && item.length > 2;
+		});
+		return listOfWords;
 	}
 }
 window.onload = function () {
-	makeButtons();
+	game.makeButtons();
+	var para = "You can put any paragraph of text copied from the internet here. This will replace all non-letter and space characters with nothing, and change all letters to lowercase. Then it will split the string on spaces, check for duplicates and words smaller than 3 characters, and store that as 'listOfWords'.";
+	game.words = game.generateWordList(para);
 	game.totalWords = game.getTotalWords();
 	game.start();
 	document.onkeyup = function (e) {
 		var choice = e.key;
-		letterChosen(choice);
+		game.letterChosen(choice);
 	}
 }
-
-//Code to take a paragraph of text and cut it in to a usable array of words with at least 3 characters
-var para = "You can put any paragraph of text copied from the internet here. This will replace all non-letter and space characters with nothing, and change all letters to lowercase. Then it will split the string on spaces, check for duplicates and words smaller than 3 characters, and store that as 'listOfWords'.";
-var listOfWords = para.replace(/[^A-Za-z\s]+/g, '').toLowerCase().split(" ").filter(function (item, pos, self) {
-	return self.indexOf(item) == pos && item.length > 2;
-});
-console.log(listOfWords);
